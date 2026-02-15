@@ -16,6 +16,7 @@ services:
       - postgres
     environment:
       SYNAPSE_CONFIG_PATH: /data/homeserver.yaml
+    command: ["run"]
     volumes:
       - 'matrix_synapse_data:/data'
       - './homeserver.yaml:/data/homeserver.yaml:ro'
