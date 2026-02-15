@@ -24,7 +24,7 @@ database:
     cp_max: 10
 
 # Logging configuration
-log_config: "/data/log.config"
+log_config: "/config/log.config"
 
 # Media store configuration
 media_store_path: "/data/media_store"
