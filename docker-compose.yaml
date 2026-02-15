@@ -14,12 +14,8 @@ services:
     image: 'matrixdotorg/synapse:latest'
     depends_on:
       - postgres
-    command:
-      - python
-      - -m
-      - synapse.app.homeserver
-      - -c
-      - /data/homeserver.yaml
+    environment:
+      SYNAPSE_CONFIG_PATH: /data/homeserver.yaml
     volumes:
       - 'matrix_synapse_data:/data'
       - './homeserver.yaml:/data/homeserver.yaml:ro'
