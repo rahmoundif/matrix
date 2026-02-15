@@ -8,6 +8,9 @@ web_client_location: https://app.element.io/
 # Public baseurl for client connections
 public_baseurl: https://chat.rahmoundif.dev/
 
+# Serve .well-known endpoints (required for Element to discover your homeserver)
+serve_server_wellknown: true
+
 # Federation settings
 federation_domain_whitelist: []
 
