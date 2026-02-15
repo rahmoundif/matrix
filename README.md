@@ -24,6 +24,7 @@ Matrix is a project designed to deliver a robust and scalable communication infr
 ## Configuration
 
 Configuration is managed through:
+
 - `docker-compose.yml` - Service orchestration
 - `homeserver.yaml` - Matrix server configuration
 - `.env` - Environment variables
@@ -31,6 +32,7 @@ Configuration is managed through:
 ## Development
 
 Edit the configuration files as needed and restart services:
+
 ```bash
 docker-compose down
 docker-compose up -d
