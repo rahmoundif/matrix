@@ -20,20 +20,6 @@ services:
     ports:
       - '8008:8008'
       - '8448:8448'
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.synapse.rule=Host(`chat.rahmoundif.dev`)
-      - traefik.http.routers.synapse.entrypoints=https
-      - traefik.http.routers.synapse.tls=true
-      - traefik.http.routers.synapse.tls.certresolver=letsencrypt
-      - traefik.http.services.synapse.loadbalancer.server.port=8008
-    networks:
-      - default
-      - coolify
-
-networks:
-  coolify:
-    external: true
 
 volumes:
   matrix_postgres_data:
