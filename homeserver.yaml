@@ -1,0 +1,73 @@
+# Basic Synapse homeserver configuration
+server_name: "chat.rahmoundif.dev"
+pid_file: /data/homeserver.pid
+
+# Web client configuration
+web_client_location: https://app.element.io/
+
+# Public baseurl for client connections
+public_baseurl: https://chat.rahmoundif.dev/
+
+# Federation settings
+federation_domain_whitelist: []
+
+# Database configuration
+database:
+  name: psycopg2
+  args:
+    user: synapse
+    password: LoveOliver90
+    database: synapse
+    host: postgres
+    port: 5432
+    cp_min: 5
+    cp_max: 10
+
+# Logging configuration
+log_config: "/data/log.config"
+
+# Media store configuration
+media_store_path: "/data/media_store"
+
+# Signing key configuration
+signing_key_path: "/data/signing.key"
+
+# Trusted key servers
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+# Registration settings
+enable_registration: true
+enable_registration_without_verification: false
+
+# Report stats setting (THIS IS THE KEY ONE!)
+report_stats: false
+
+# Listeners configuration
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client, federation]
+        compress: false
+
+  - port: 8448
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [federation]
+
+# TURN server configuration (optional)
+turn_uris: []
+turn_shared_secret: ""
+
+# Push configuration
+push:
+  include_content: true
+
+# Experimental features
+experimental_features:
+  spaces_enabled: true
