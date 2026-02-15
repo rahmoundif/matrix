@@ -32,13 +32,16 @@ media_store_path: "/data/media_store"
 # Signing key configuration
 signing_key_path: "/data/signing.key"
 
+# Macaroon secret key (for signing tokens)
+macaroon_secret_key: "a0cccf497c2cba3df89821e3b67523751fd556aab013ad6d2c9e50f8c1454600"
+
 # Trusted key servers
 trusted_key_servers:
   - server_name: "matrix.org"
+suppress_key_server_warning: true
 
 # Registration settings
-enable_registration: true
-enable_registration_without_verification: false
+enable_registration: false
 
 # Report stats setting (THIS IS THE KEY ONE!)
 report_stats: false
