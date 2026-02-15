@@ -14,9 +14,8 @@ services:
     image: 'matrixdotorg/synapse:latest'
     depends_on:
       - postgres
-    environment:
-      SYNAPSE_CONFIG_PATH: /data/homeserver.yaml
-    command: ["run"]
+    entrypoint: ["python", "-m", "synapse.app.homeserver"]
+    command: ["-c", "/data/homeserver.yaml"]
     volumes:
       - 'matrix_synapse_data:/data'
       - './homeserver.yaml:/data/homeserver.yaml:ro'
