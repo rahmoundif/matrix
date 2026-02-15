@@ -1,7 +1,9 @@
 FROM matrixdotorg/synapse:latest
 
-COPY homeserver.yaml /config/homeserver.yaml
+RUN apt-get update && apt-get install -y gettext-base && rm -rf /var/lib/apt/lists/*
+
+COPY homeserver.yaml /config/homeserver.yaml.template
 COPY log.config /config/log.config
 
 ENTRYPOINT []
-CMD ["python", "-m", "synapse.app.homeserver", "-c", "/config/homeserver.yaml"]
+CMD ["sh", "-c", "envsubst < /config/homeserver.yaml.template > /config/homeserver.yaml && python -m synapse.app.homeserver -c /config/homeserver.yaml"]

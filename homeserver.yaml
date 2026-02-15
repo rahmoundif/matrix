@@ -15,9 +15,9 @@ federation_domain_whitelist: []
 database:
   name: psycopg2
   args:
-    user: synapse
-    password: LoveOliver90
-    database: synapse
+    user: ${DB_USER}
+    password: ${DB_PASSWORD}
+    database: ${DB_NAME}
     host: postgres
     port: 5432
     cp_min: 5
@@ -33,7 +33,7 @@ media_store_path: "/data/media_store"
 signing_key_path: "/data/signing.key"
 
 # Macaroon secret key (for signing tokens)
-macaroon_secret_key: "a0cccf497c2cba3df89821e3b67523751fd556aab013ad6d2c9e50f8c1454600"
+macaroon_secret_key: "${MACAROON_SECRET_KEY}"
 
 # Trusted key servers
 trusted_key_servers:
@@ -42,6 +42,9 @@ suppress_key_server_warning: true
 
 # Registration settings
 enable_registration: false
+
+# Shared secret for user registration (use with register_new_matrix_user -k)
+registration_shared_secret: "${REGISTRATION_SHARED_SECRET}"
 
 # Report stats setting (THIS IS THE KEY ONE!)
 report_stats: false
