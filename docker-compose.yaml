@@ -11,14 +11,11 @@ services:
     restart: unless-stopped
 
   synapse:
-    image: 'matrixdotorg/synapse:latest'
+    build: .
     depends_on:
       - postgres
-    entrypoint: ["/bin/sh", "-c", "python -m synapse.app.homeserver -c /data/homeserver.yaml"]
     volumes:
       - 'matrix_synapse_data:/data'
-      - './homeserver.yaml:/data/homeserver.yaml:ro'
-      - './log.config:/data/log.config:ro'
     restart: unless-stopped
     ports:
       - '8008:8008'
