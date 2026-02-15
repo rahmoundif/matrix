@@ -14,8 +14,7 @@ services:
     image: 'matrixdotorg/synapse:latest'
     depends_on:
       - postgres
-    entrypoint: ["python", "-m", "synapse.app.homeserver"]
-    command: ["-c", "/data/homeserver.yaml"]
+    entrypoint: ["/bin/sh", "-c", "python -m synapse.app.homeserver -c /data/homeserver.yaml"]
     volumes:
       - 'matrix_synapse_data:/data'
       - './homeserver.yaml:/data/homeserver.yaml:ro'
